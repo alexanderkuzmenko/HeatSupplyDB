@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 10 2019 г., 16:00
+-- Время создания: Сен 10 2019 г., 16:52
 -- Версия сервера: 5.6.37
 -- Версия PHP: 7.0.21
 
@@ -41,6 +41,32 @@ CREATE TABLE `accounts` (
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `meter_info`
+--
+
+CREATE TABLE `meter_info` (
+  `meter_info_id` int(11) NOT NULL,
+  `account_id` int(11) NOT NULL,
+  `meter_date` datetime NOT NULL,
+  `amount` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `payments`
+--
+
+CREATE TABLE `payments` (
+  `payment_id` int(11) NOT NULL,
+  `account_id` int(11) NOT NULL,
+  `payment_date` datetime NOT NULL,
+  `amount` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `users`
 --
 
@@ -69,6 +95,20 @@ ALTER TABLE `accounts`
   ADD KEY `user_id` (`user_id`);
 
 --
+-- Индексы таблицы `meter_info`
+--
+ALTER TABLE `meter_info`
+  ADD PRIMARY KEY (`meter_info_id`),
+  ADD KEY `account_id` (`account_id`);
+
+--
+-- Индексы таблицы `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`payment_id`),
+  ADD KEY `account_id` (`account_id`);
+
+--
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
@@ -84,6 +124,16 @@ ALTER TABLE `users`
 ALTER TABLE `accounts`
   MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT для таблицы `meter_info`
+--
+ALTER TABLE `meter_info`
+  MODIFY `meter_info_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT для таблицы `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
@@ -97,6 +147,18 @@ ALTER TABLE `users`
 --
 ALTER TABLE `accounts`
   ADD CONSTRAINT `accounts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+
+--
+-- Ограничения внешнего ключа таблицы `meter_info`
+--
+ALTER TABLE `meter_info`
+  ADD CONSTRAINT `meter_info_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`account_id`);
+
+--
+-- Ограничения внешнего ключа таблицы `payments`
+--
+ALTER TABLE `payments`
+  ADD CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`account_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
