@@ -54,15 +54,13 @@ class User extends Model
   public function create() {
     $this->registrationDate = date('Y-m-d h:i:s');
     $sql = "INSERT INTO users("
-    . "admin, "
     . "email, "
     . "password, "
     . "registration_date) "
-    . "VALUES (?, ?, ?, ?);";
+    . "VALUES (?, ?, ?);";
 
     $stmt = DataBase::$connection->prepare($sql);
     $stmt->execute([
-      0,
       $this->email,
       $this->password,
       $this->registrationDate

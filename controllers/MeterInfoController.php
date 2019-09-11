@@ -1,6 +1,6 @@
 <?php
 
-class AccountController extends Controller 
+class MeterInfoController extends Controller 
 {
 
   public function actionView($parameters = []) 
@@ -15,7 +15,7 @@ class AccountController extends Controller
   
   public function actionList($parameters = []) 
   {
-    $this->title = 'Рахунки користувача';
+    $this->title = 'Покази лічильника';
     $params['accounts'] = Account::getAccountsByUser($this->user->userId);
     $params['user'] = $this->user;
     $this->render('list', $params);

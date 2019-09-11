@@ -35,14 +35,14 @@
               <div class="form-group row">
                 <label for="form-house" class="col-sm-4 col-form-label">House</label>
                 <div class="col-sm-8">
-                  <input type='text' class="form-control"  name='house' id="form-house" value='<?= $account->house; ?>' pattern="[\-A-Za-zА-Яа-яЇїЄєЁёІі\d]{2,10}" required="required">
+                  <input type='text' class="form-control"  name='house' id="form-house" value='<?= $account->house; ?>' pattern="[\-A-Za-zА-Яа-яЇїЄєЁёІі\d]{1,10}" required="required">
                 </div>
               </div>
 
               <div class="form-group row">
                 <label for="form-appartment" class="col-sm-4 col-form-label">Appartment</label>
                 <div class="col-sm-8">
-                  <input type='text' class="form-control"  name='appartment' id="form-appartment" value='<?= $account->appartment; ?>' pattern="[\-A-Za-zА-Яа-яЇїЄєЁёІі\d]{2,10}" required="required">
+                  <input type='text' class="form-control"  name='appartment' id="form-appartment" value='<?= $account->appartment; ?>' pattern="[\-A-Za-zА-Яа-яЇїЄєЁёІі\d]{1,10}" required="required">
                 </div>
               </div>
 

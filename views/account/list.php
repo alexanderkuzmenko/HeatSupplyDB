@@ -9,6 +9,7 @@
             <a href="/account/new" class="btn btn-primary m-2 float-right"><i class="fas fa-plus"></i></a>
             <table class="table table-bordered">
               <tr class="success">
+                <th>ID рахунку</th>
                 <th>Місто</th>
                 <th>Вулиця</th>
                 <th>Будинок</th>
@@ -17,6 +18,10 @@
               </tr>
               <?php foreach($accounts as $key => $accountItem): ?>
                 <tr>
+                  
+                  <td>
+                    <span><?= $accountItem['account_id']; ?></span>
+                  </td>
                   <td>
                     <span><?= $accountItem['city']; ?></span>
                   </td>
